@@ -51,7 +51,27 @@ STOCK_GROUPS = {
     "Countries": [
         "EZA", "ARGT", "EWA", "THD", "EIDO", "EWC", "GREK", "EWP", "EWG", "EWL", "EUFN", "EWY", "IEUR", "EFA", "ACWI",
         "IEV", "EWQ", "EWI", "EWJ", "EWW", "ECH", "EWD", "ASHR", "EWS", "KSA", "INDA", "EEM", "EWZ", "TUR", "EWH", "EWT", "MCHI"
-    ]
+    ],
+    "The Cloud 7": ["MSFT", "AMZN", "GOOGL", "ORCL", "IBM", "META", "NET"],
+    "The Software 7": ["ADBE", "PANW", "PLTR", "INTU", "CRM", "NOW", "WDAY"],
+    "The New Staples 7": ["AAPL", "AMZN", "META", "NFLX", "GOOGL", "SPOT", "UBER"],
+    "The Old Staples 7": ["PG", "KO", "PEP", "PM", "CL", "MDLZ", "WMT"],
+    "The Toll Road 7": ["V", "MA", "PYPL", "CME", "ICE", "SPGI", "MSCI"],
+    "The Energy 7": ["XOM", "CVX", "COP", "EOG", "FANG", "DVN", "SLB"],
+    "The Defense 7": ["LMT", "RTX", "NOC", "GD", "BA", "LHX", "HII"],
+    "The Industrial 7": ["CAT", "DE", "HON", "PH", "EMR", "GE", "TT"],
+    "The Semi 7": ["NVDA", "AVGO", "AMD", "QCOM", "INTC", "TXN", "MRVL"],
+    "The Fab 7": ["ASML", "AMAT", "LRCX", "KLAC", "TSM", "MU", "TER"],
+    "The Buildout 7": ["ANET", "VRT", "APH", "PWR", "EME", "GEV", "ETN"],
+    "The Housing 7": ["DHI", "LEN", "VMC", "MLM", "SHW", "HD", "LOW"],
+    "The Old Metals 7": ["NEM", "GOLD", "AEM", "WPM", "FNV", "RGLD", "AGI"],
+    "The New Metals 7": ["FCX", "SCCO", "CCJ", "ALB", "SQM", "MP", "PAAS"],
+    "The Bank 7": ["JPM", "GS", "MS", "BAC", "WFC", "BLK", "C"],
+    "The Health 7": ["UNH", "LLY", "ABBV", "JNJ", "PFE", "MRK", "GILD"],
+    "The Medtech 7": ["ISRG", "TMO", "ABT", "MDT", "SYK", "BSX", "DHR"],
+    "The Freight 7": ["UNP", "CSX", "FDX", "UPS", "ODFL", "JBHT", "NSC"],
+    "The Insurance 7": ["PGR", "CB", "MMC", "AON", "AIG", "MET", "AFL"],
+    "The Power 7": ["NEE", "SO", "DUK", "CEG", "VST", "AEP", "SRE"],
 }
 
 LEVERAGED_ETFS = {
