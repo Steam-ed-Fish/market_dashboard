@@ -300,6 +300,8 @@ def get_stock_data(ticker_symbol, charts_dir):
         stock = yf.Ticker(ticker_symbol)
         hist = stock.history(period="21d")
         daily = stock.history(period="60d")
+        yearly = stock.history(period="1y")
+        
         if len(hist) < 2 or len(daily) < 50:
             return None
 
@@ -308,6 +310,24 @@ def get_stock_data(ticker_symbol, charts_dir):
         five_day_change = (hist['Close'].iloc[-1] / hist['Close'].iloc[-6] - 1) * 100 if len(hist) >= 6 else None
         twenty_day_change = (hist['Close'].iloc[-1] / hist['Close'].iloc[-21] - 1) * 100 if len(hist) >= 21 else None
 
+        today = daily.index[-1].date()
+        days_since_monday = today.weekday()
+        wtd_change = None
+        if days_since_monday > 0:
+            for i in range(2, len(daily)+1):
+                day = daily.index[-i].date()
+                if day.weekday() < days_since_monday:
+                    wtd_change = (daily['Close'].iloc[-1] / daily['Close'].iloc[-i] - 1) * 100
+                    break
+
+        ytd_change = None
+        current_year = today.year
+        if yearly is not None and len(yearly) > 0:
+            yearly_filtered = yearly[yearly.index.year == current_year]
+            if len(yearly_filtered) >= 2:
+                ytd_change = (yearly_filtered['Close'].iloc[-1] / yearly_filtered['Close'].iloc[0] - 1) * 100
+
+        
         sma50 = calculate_sma(daily)
         atr = calculate_atr(daily)
         current_close = daily['Close'].iloc[-1]
@@ -340,6 +360,8 @@ def get_stock_data(ticker_symbol, charts_dir):
             "intra": round(intraday_change, 2) if intraday_change is not None else None,
             "5d": round(five_day_change, 2) if five_day_change is not None else None,
             "20d": round(twenty_day_change, 2) if twenty_day_change is not None else None,
+            "wtd": round(wtd_change, 2) if wtd_change is not None else None,
+            "ytd": round(ytd_change, 2) if ytd_change is not None else None,
             "atr_pct": round(atr_pct, 1) if atr_pct is not None else None,
             "dist_sma50_atr": round(dist_sma50_atr, 2) if dist_sma50_atr is not None else None,
             "rs": round(rs_sts, 0) if rs_sts is not None else None,
