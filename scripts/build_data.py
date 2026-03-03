@@ -313,7 +313,9 @@ def get_stock_data(ticker_symbol, charts_dir):
         today = daily.index[-1].date()
         days_since_monday = today.weekday()
         wtd_change = None
-        if days_since_monday > 0:
+        if days_since_monday == 0:
+            wtd_change = daily_change
+        else:
             for i in range(2, len(daily)+1):
                 day = daily.index[-i].date()
                 if day.weekday() < days_since_monday:
